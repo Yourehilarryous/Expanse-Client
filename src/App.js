@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/layout/Header';
+// import Routes from './config/routes'
+import Main from './Pages/Main'
+import Genre from './Pages/Genre'
+import Profile from './Pages/Profile'
+import {Switch, Route, BrowserRouter} from 'react-router-dom'
+
+import {Grid} from '@material-ui/core'
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+      <div className="App">
+        <Grid container direction='column'>
+          <Grid item>
+            <Header />
+          </Grid>
+          <Grid item container>
+            <Grid item xs={0} sm={2} />
+              <Grid item xs={12} sm={8}>
+                <BrowserRouter>
+                  <Switch>
+                      <Route exact path='/' component={ Main }/>
+                      <Route exact path='/genre' component={ Genre }/>
+                      <Route path='/profile/id' component={ Profile }/>
+                  </Switch>
+                </BrowserRouter>
+              </Grid>
+              <Grid item xs={0} sm={2}/>
+            </Grid>
+          </Grid>     
+      </div>
+    );
 }
 
 export default App;
