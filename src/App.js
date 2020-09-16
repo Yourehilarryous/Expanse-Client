@@ -5,6 +5,8 @@ import Header from './components/layout/Header';
 import Main from './Pages/Main'
 import Genre from './Pages/Genre'
 import Profile from './Pages/Profile'
+import Login from './components/auth/Login'
+import Register from './components/auth/Register'
 import {Switch, Route, BrowserRouter} from 'react-router-dom'
 
 import {Grid} from '@material-ui/core'
@@ -26,7 +28,9 @@ function App() {
                   <Switch>
                       <Route exact path='/' component={ Main }/>
                       <Route exact path='/genre' component={ Genre }/>
-                      <Route path='/profile/id' component={ Profile }/>
+                      <Route exact path='/login' component={ Login }/>
+                      <Route exact path='/register' component={ Register }/>
+                      <Route path='/profile' component={ Profile }/>
                   </Switch>
                 </BrowserRouter>
               </Grid>

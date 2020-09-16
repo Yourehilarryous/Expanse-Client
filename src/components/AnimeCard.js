@@ -35,17 +35,14 @@ const AnimeCard = () => {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
-                            Lizard
+                            Anime
                         </Typography>
                         <Typography variant="body" color="textSecondary" component="p">
-                            {/* <Anime /> */}
+                            Anime Stuff
                         </Typography>
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" color="primary">
-                        Share
-                    </Button>
                     <Button size="small" color="primary">
                         Learn More
                     </Button>

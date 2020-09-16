@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -14,13 +15,25 @@ const Header = () => {
 
     const classes = useStyles()
 
+    //Link require manual load to work
+
     return (
         <AppBar position='static'>
             <Toolbar>
-                <Typography>
-                    This is our header
-                </Typography>
-                <Button className={classes.headerStyles}>Login</Button>
+                <Link to='/'>
+                    <Typography>
+                        This is our header
+                    </Typography>
+                </Link>
+                <Link to='/profile'>
+                    <Button className={classes.headerStyles}/>Profile
+                </Link>
+                <Link to='/login'>
+                    <Button className={classes.headerStyles}/>Login
+                </Link>
+                <Link to='/register'>
+                    <Button className={classes.headerStyles}/>Register
+                </Link>
             </Toolbar>
         </AppBar>
     );

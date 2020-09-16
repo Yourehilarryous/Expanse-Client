@@ -13,10 +13,14 @@ class Main extends Component{
     }
 
     componentDidMount(){
-        AnimeModel.show(this.props)
+        this.fetchData()
+    }
+
+    fetchData = () => {
+        AnimeModel.show()
             .then(data => {
                 this.setState({anime: data})
-                console.log(data)
+                console.log("Anime Data:", data)
             })
     }
 
