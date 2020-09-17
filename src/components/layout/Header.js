@@ -19,21 +19,23 @@ const Header = () => {
 
     return (
         <AppBar position='static'>
-            <Toolbar>
-                <Link to='/'>
-                    <Typography>
-                        This is our header
-                    </Typography>
-                </Link>
-                <Link to='/profile'>
-                    <Button className={classes.headerStyles}/>Profile
-                </Link>
-                <Link to='/login'>
-                    <Button className={classes.headerStyles}/>Login
-                </Link>
-                <Link to='/register'>
-                    <Button className={classes.headerStyles}/>Register
-                </Link>
+            <Toolbar >
+                <div>
+                    <Link to='/'>
+                        <Typography className={classes.headerStyles}>
+                            This is our header
+                        </Typography>
+                    </Link>
+                </div>
+                    <Link to='/profile'>
+                        <Button />Profile
+                    </Link>
+                    <Link to='/login'>
+                        <Button />Login
+                    </Link>
+                    <Link to='/register'>
+                        <Button />Register
+                    </Link>
             </Toolbar>
         </AppBar>
     );

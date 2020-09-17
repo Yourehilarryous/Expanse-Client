@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import axios from 'axios'
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
+import { Typography, Button } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -10,6 +11,7 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import { Grid } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -29,18 +31,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = () => {
 
-    // const [formData, setFormData] = useState({
-    //     name: '',
-    //     email: '',
-    //     password: ''
-    // })
-
-    // const { name, email, password } = formData
-
-    // const onChange = e => setFormData({
-    //     ...formData, [e.target.name]: e.target.value
-    // })
-
     const classes = useStyles();
     const [values, setValues] = useState({
         email: '',
@@ -48,7 +38,7 @@ const Login = () => {
         showPassword: false,
     });
 
-    const {email, password} = values
+    const { email, password } = values
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -85,23 +75,37 @@ const Login = () => {
     }
 
     return (
-        <Fragment>
+        <Grid container xs={12} sm={8} style={{ padding: 10 }}>
+            <div />
             <div className={classes.root}>
-                <div>
-                    <h1>Sign In</h1>
-                    <form className={classes.root} autoComplete="off" onSubmit={e => onSubmit(e)}>
-                        <ul>
-                            <li><TextField
-                                id="standard-basic"
-                                label="Email"
-                                variant="filled"
-                                name='email'
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <Grid container justify="center">
+                        <Typography component="h1" variant="h5">
+                            Sign in
+                        </Typography>
+                        <form className={classes.root} autoComplete="off" onSubmit={e => onSubmit(e)}>
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email Address"
+                                name="email"
+                                autoComplete="email"
+                                autoFocus
                                 value={values.email}
-                                onChange={handleChange('email')} /></li>
+                                onChange={handleChange('email')} />
                             <FormControl className={clsx(classes.margin, classes.textField)}>
                                 <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                                 <Input
+                                    variant="outlined"
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    name="password"
                                     id="standard-adornment-password"
+                                    label="Password"
                                     type={values.showPassword ? 'text' : 'password'}
                                     value={values.password}
                                     onChange={handleChange('password')}
@@ -118,21 +122,28 @@ const Login = () => {
                                     }
                                 />
 
-                                <Input type="submit" value="Login" />
                             </FormControl>
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                                className={classes.submit}
+                            > Sign In
+                            </Button>
 
                             {/* <li><TextField
-                            id="standard-basic"
-                            label="Password"
-                            variant="filled"
-                            name='password'
+                                id="standard-basic"
+                                label="Password"
+                                variant="filled"
+                                name='password'
 
-                            onChange={e => onChange(e)} /></li> */}
-                        </ul>
-                    </form>
+                                onChange={e => onChange(e)} /></li> */}
+                        </form>
+                    </Grid>
                 </div>
             </div>
-        </Fragment >
+        </Grid >
     );
 }
 

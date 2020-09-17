@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import axios from 'axios'
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
+import { Typography, Button } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -82,7 +83,7 @@ const Register = () => {
 
             const body = JSON.stringify(newUser)
 
-            const baseURL = 'http://localhost:5001/api/'
+            const baseURL = 'http://localhost:5001/api'
 
             const res = await axios.post(`${baseURL}/users`, body, config)
             console.log(res.data)
@@ -118,6 +119,7 @@ const Register = () => {
                                 <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                                 <Input
                                     id="standard-adornment-password"
+                                    label="Password"
                                     type={values.showPassword ? 'text' : 'password'}
                                     value={values.password}
                                     onChange={handleChange('password')}
@@ -134,16 +136,16 @@ const Register = () => {
                                     }
                                 />
 
-                                <Input type="submit" value="Register" />
+                                
                             </FormControl>
-
-                            {/* <li><TextField
-                            id="standard-basic"
-                            label="Password"
-                            variant="filled"
-                            name='password'
-
-                            onChange={e => onChange(e)} /></li> */}
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                                className={classes.submit}
+                            > Sign In
+                            </Button>
                         </ul>
                     </form>
                 </div>

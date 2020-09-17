@@ -24,15 +24,13 @@ function App() {
           <Grid item container>
             <Grid item xs={0} sm={2} />
               <Grid item xs={12} sm={8}>
-                <BrowserRouter>
-                  <Switch>
-                      <Route exact path='/' component={ Main }/>
-                      <Route exact path='/genre' component={ Genre }/>
-                      <Route exact path='/login' component={ Login }/>
-                      <Route exact path='/register' component={ Register }/>
-                      <Route path='/profile' component={ Profile }/>
-                  </Switch>
-                </BrowserRouter>
+                <Switch>
+                    <Route exact path='/' component={ Main }/>
+                    <Route exact path='/genre' component={ Genre }/>
+                    <Route exact path='/login' component={ Login }/>
+                    <Route exact path='/register' component={ Register }/>
+                    <Route path='/profile' component={ Profile }/>
+                </Switch>
               </Grid>
               <Grid item xs={0} sm={2}/>
             </Grid>
