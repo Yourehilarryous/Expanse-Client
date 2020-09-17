@@ -6,7 +6,7 @@ export default class AnimeModel {
     static show = async () => {
         await axios.get(`${baseURL}/search/anime?q=Naruto&page=1`)
             .then(response => {
-                let animeData = response.data.results
+                let animeData = response.data
                 // console.log(animeData)
                 return animeData
             })

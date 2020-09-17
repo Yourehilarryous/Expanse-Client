@@ -20,7 +20,7 @@ class Main extends Component{
         AnimeModel.show()
             .then(data => {
                 this.setState({anime: data})
-                console.log("Anime Data:", data)
+                console.log("Anime Data:", this.state.anime)
             })
     }
 

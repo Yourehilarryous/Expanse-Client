@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import axios from 'axios'
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
@@ -42,10 +43,13 @@ const Register = () => {
 
     const classes = useStyles();
     const [values, setValues] = useState({
+        name: '',
         email: '',
         password: '',
         showPassword: false,
     });
+
+    const {name, email, password} = values
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -59,9 +63,32 @@ const Register = () => {
         event.preventDefault();
     };
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault()
         console.log(values)
+
+        const newUser = {
+            name,
+            email,
+            password
+        }
+
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            const body = JSON.stringify(newUser)
+
+            const baseURL = 'http://localhost:5001/api/'
+
+            const res = await axios.post(`${baseURL}/users`, body, config)
+            console.log(res.data)
+        } catch (err) {
+            console.error(err)
+        }
     }
 
     return (
@@ -83,6 +110,7 @@ const Register = () => {
                                 id="standard-basic"
                                 label="Email"
                                 variant="filled"
+                                required
                                 name='email'
                                 value={values.email}
                                 onChange={handleChange('email')} /></li>
