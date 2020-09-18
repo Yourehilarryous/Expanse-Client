@@ -39,7 +39,7 @@ const Login = () => {
         showPassword: false,
     });
 
-    const { email, password } = values
+    // const { email, password } = values
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -64,11 +64,25 @@ const Login = () => {
                 }
             }
 
-            const body = JSON.stringify(email, password)
+            const email = values.email
+            console.log(email)
+
+            const password = values.password
+            console.log(password)
+
+            let body = {
+                email: email,
+                password: password
+            }
+
+            console.log(body)
+
+            // body = JSON.stringify(body)
+            // console.log(body)
 
             const baseURL = 'http://localhost:5001/api'
 
-            const res = await axios.post(`${baseURL}/auth`, body, config)
+            const res = await axios.post('http://localhost:5001/api/auth', body, {withCredentials: true})
             console.log(res.data)
         } catch (err) {
             console.error(err)

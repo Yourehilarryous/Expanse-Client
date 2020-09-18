@@ -4,7 +4,7 @@ let baseURL = 'https://api.jikan.moe/v3'
 export default class AnimeModel {
 
     static show = async () => {
-        return axios.get(`${baseURL}/search/anime?q=Naruto&page=1`)}
+        return axios.get(`${baseURL}/search/anime?q=`)}
     
     }
 

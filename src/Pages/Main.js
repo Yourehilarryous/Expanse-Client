@@ -26,6 +26,19 @@ const Main = () => {
     const classes = useStyles()
 
     const [input, setInput] = useState('');
+
+    const handleSearch = (e) => {
+        setInput(e.target.value)
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+        console.log(input)
+        //Use the input toput to make the serach URL
+        //COnfirm that the search returns data
+        //Set data in this.state
+        //Pass data down to the right components
+    }
     // const [animeList, setAnimeList] = useState();
 
     // const fetchData = async () => {
@@ -44,14 +57,16 @@ const Main = () => {
         <Grid container className={classes.container}>
             <Grid item xs={12} sm={6} >
                 <Search 
-                input={input}
-                onChange={setInput}
+                    input={input}
+                    onChange={setInput}
+                    handleSubmit={onSubmit}
                 />
             </Grid>
             <Grid item className={classes.cards} xs={12} sm={4}>
-                <AnimeCard />
-                <AnimeCard />
-                <AnimeCard />
+                <AnimeCard 
+                    inputValue={input}
+                    handleSearch={handleSearch}
+                />
             </Grid>
         </Grid>
         )

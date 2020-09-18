@@ -30,45 +30,45 @@ const AnimeCard = () => {
     const fetchData = async () => {
         await AnimeModel.show()
             .then(animeData => {
-                setAnimeList({animeList: animeData.data.results})
-                console.log(animeData.data.results)
+                setAnimeList(animeData.data.results)
             })
-    }
+        }
+        
+        useEffect(() => {
+            fetchData()
+        },[])
+        
+        const anime = animeList.map((a, i) => {
+            return (
+                <div key={i}>
+                    <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia
+                                component="img"
+                                alt="Contemplative Reptile"
+                                height="140"
+                                image={a.imageUrl}
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    {a.title}
+                                </Typography>
+                                <Typography variant="body" color="textSecondary" component="p">
+                                    {a.synopsis}
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                            <Button size="small" color="primary">
+                                Learn More
+                            </Button>
+                        </CardActions>
+                    </Card>
+                </div>
+            )
+        })
 
-    const anime = animeList.map((a, i) => {
-        return (
-            <div key={i}>
-                <Card className={classes.root}>
-                    <CardActionArea>
-                        <CardMedia
-                            component="img"
-                            alt="Contemplative Reptile"
-                            height="140"
-                            image={a.image_url}
-                            title="Contemplative Reptile"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                {a.title}
-                            </Typography>
-                            <Typography variant="body" color="textSecondary" component="p">
-                                {a.synopsis}
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Learn More
-                        </Button>
-                    </CardActions>
-                </Card>
-            </div>
-        )
-    })
-
-    useEffect(() => {
-        fetchData()
-    },[])
+    
     
         return (
             <div>

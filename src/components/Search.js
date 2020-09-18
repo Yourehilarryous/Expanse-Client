@@ -26,16 +26,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Searchbar({keyword,setKeyword}) {
+
+export default function Searchbar({input,onChange,handleSubmit}) {
     const classes = useStyles();
 
+    
+    
     return (
-        <Paper component="form" className={classes.root}>
+        <Paper onSubmit={handleSubmit} component="form" className={classes.root}>
             <InputBase
                 className={classes.input}
-                value={keyword}
+                value={input}
                 placeholder="Search"
-                onChange={(e) => setKeyword(e.target.value)}
+                onChange={(e) => onChange(e.target.value)}
                 // inputProps={{ 'aria-label': 'search' }}
             />
             <IconButton type="submit" className={classes.iconButton} aria-label="search">
