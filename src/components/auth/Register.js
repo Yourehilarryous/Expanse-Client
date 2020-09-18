@@ -11,6 +11,7 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import { Grid } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(3),
     },
     textField: {
-        width: '25ch',
+        width: '100%',
     },
 }));
 
@@ -50,7 +51,7 @@ const Register = () => {
         showPassword: false,
     });
 
-    const {name, email, password} = values
+    const { name, email, password } = values
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -93,51 +94,69 @@ const Register = () => {
     }
 
     return (
-        <Fragment>
+        <Grid container xs={12} sm={8} style={{ padding: 10 }}>
+            <div />
             <div className={classes.root}>
-                <div>
-                    <h1>Register</h1>
-                    <form className={classes.root} noValidate autoComplete="off" onSubmit={e => onSubmit(e)}>
-                        <ul>
-                            <li><TextField
-                                id="standard-basic"
-                                label="Name"
-                                variant="filled"
-                                required
-                                name='name'
-                                value={values.name}
-                                onChange={handleChange('name')} /></li>
-                            <li><TextField
-                                id="standard-basic"
-                                label="Email"
-                                variant="filled"
-                                required
-                                name='email'
-                                value={values.email}
-                                onChange={handleChange('email')} /></li>
-                            <FormControl className={clsx(classes.margin, classes.textField)}>
-                                <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-                                <Input
-                                    id="standard-adornment-password"
-                                    label="Password"
-                                    type={values.showPassword ? 'text' : 'password'}
-                                    value={values.password}
-                                    onChange={handleChange('password')}
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                            >
-                                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                />
-
-                                
-                            </FormControl>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <Grid container justify="center">
+                        <Typography component="h1" variant="h5">
+                            Register
+                        </Typography>
+                        <form className={classes.root} noValidate autoComplete="off" onSubmit={e => onSubmit(e)}>
+                            <Grid container spaceing={2}></Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        // variant="outlined"
+                                        margin="normal"
+                                        required
+                                        fullWidth
+                                        id="name"
+                                        label="Name"
+                                        name="name"
+                                        autoFocus
+                                        value={values.name}
+                                        onChange={handleChange('name')} />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                    // variant="outlined"
+                                        margin="normal"
+                                        required
+                                        fullWidth
+                                        id="email"
+                                        label="Email"
+                                        required
+                                        name='email'
+                                        value={values.email}
+                                        onChange={handleChange('email')} />
+                                </Grid>
+                                <Grid xs={12}>
+                                    <FormControl className={clsx(classes.margin, classes.textField)}>
+                                        <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+                                        <Input
+                                            // variant="outlined"
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            id="standard-adornment-password"
+                                            label="Password"
+                                            type={values.showPassword ? 'text' : 'password'}
+                                            value={values.password}
+                                            onChange={handleChange('password')}
+                                            endAdornment={
+                                                <InputAdornment position="end">
+                                                    <IconButton
+                                                        aria-label="toggle password visibility"
+                                                        onClick={handleClickShowPassword}
+                                                        onMouseDown={handleMouseDownPassword}
+                                                    >
+                                                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            }
+                                        />
+                                    </FormControl>
+                            </Grid>
                             <Button
                                 type="submit"
                                 fullWidth
@@ -146,11 +165,12 @@ const Register = () => {
                                 className={classes.submit}
                             > Sign In
                             </Button>
-                        </ul>
-                    </form>
+                        </form>
+                        {/* </Grid> */}
+                    </Grid>
                 </div>
             </div>
-        </Fragment >
+        </Grid >
     );
 }
 

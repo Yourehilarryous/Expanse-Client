@@ -25,13 +25,14 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(3),
     },
     textField: {
-        width: '25ch',
+        width: '100%'
     },
 }));
 
 const Login = () => {
 
     const classes = useStyles();
+
     const [values, setValues] = useState({
         email: '',
         password: '',
@@ -65,9 +66,9 @@ const Login = () => {
 
             const body = JSON.stringify(email, password)
 
-            const baseURL = 'http://localhost:5001/api/'
+            const baseURL = 'http://localhost:5001/api'
 
-            const res = await axios.post(`${baseURL}/auth/users`, body, config)
+            const res = await axios.post(`${baseURL}/auth`, body, config)
             console.log(res.data)
         } catch (err) {
             console.error(err)
@@ -79,13 +80,13 @@ const Login = () => {
             <div />
             <div className={classes.root}>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <Grid container justify="center">
+                    <Grid >
                         <Typography component="h1" variant="h5">
                             Sign in
                         </Typography>
                         <form className={classes.root} autoComplete="off" onSubmit={e => onSubmit(e)}>
                             <TextField
-                                variant="outlined"
+                                // variant="outlined"
                                 margin="normal"
                                 required
                                 fullWidth
@@ -96,13 +97,13 @@ const Login = () => {
                                 autoFocus
                                 value={values.email}
                                 onChange={handleChange('email')} />
-                            <FormControl className={clsx(classes.margin, classes.textField)}>
+                            <FormControl className={clsx(classes.margin, classes.textField)} >
                                 <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                                 <Input
-                                    variant="outlined"
+                                    // variant="outlined"
                                     margin="normal"
                                     required
-                                    fullWidth
+                                    // fullWidth
                                     name="password"
                                     id="standard-adornment-password"
                                     label="Password"

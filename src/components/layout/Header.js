@@ -6,8 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
     headerStyles: {
-        flex: 1 
-        //When styling, set to justify-conentn: flex-end 
+        flexGrow: 1
+        
     }
 }))
 
@@ -20,10 +20,10 @@ const Header = () => {
     return (
         <AppBar position='static'>
             <Toolbar >
-                <div>
+                <div className={classes.headerStyles}>
                     <Link to='/'>
-                        <Typography className={classes.headerStyles}>
-                            This is our header
+                        <Typography >
+                            Expanse
                         </Typography>
                     </Link>
                 </div>
