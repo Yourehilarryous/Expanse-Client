@@ -27,12 +27,16 @@ const Main = () => {
 
     const [input, setInput] = useState('');
 
-    const handleSearch = (e) => {
-        setInput(e.target.value)
-    }
-
+    // const handleSearch = (e) => {
+    // }
+    
     const onSubmit = (e) => {
         e.preventDefault()
+
+        setInput(e.target.value)
+        
+
+        console.log("Event:", e.target.value)
         console.log(input)
         //Use the input toput to make the serach URL
         //COnfirm that the search returns data
@@ -65,7 +69,7 @@ const Main = () => {
             <Grid item className={classes.cards} xs={12} sm={4}>
                 <AnimeCard 
                     inputValue={input}
-                    handleSearch={handleSearch}
+                    handleSubmit={onSubmit}
                 />
             </Grid>
         </Grid>

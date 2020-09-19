@@ -21,16 +21,19 @@ const useStyles = makeStyles({
 
 
 
-const AnimeCard = () => {
+const AnimeCard = (props) => {
 
     const classes = useStyles();
 
     const [animeList, setAnimeList] = useState([]);
+    // const {input} = useState();
+    console.log(props.inputValue)
 
     const fetchData = async () => {
-        await AnimeModel.show()
+        await AnimeModel.show(props.inputValue)
             .then(animeData => {
                 setAnimeList(animeData.data.results)
+                console.log(animeData.data.results)
             })
         }
         
@@ -45,9 +48,9 @@ const AnimeCard = () => {
                         <CardActionArea>
                             <CardMedia
                                 component="img"
-                                alt="Contemplative Reptile"
+                                // alt="Contemplative Reptile"
                                 height="140"
-                                image={a.imageUrl}
+                                image={a.image_url}
                             />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h2">
