@@ -31,7 +31,7 @@ class AnimeCard extends Component {
     
 
     render() {
-        const anime = this.state.animeList.map((a, i) => {
+        const anime = this.props.animeList.map((a, i) => {
             return (
                 <div key={i}>
                     <Card className={this.state.classes.root}>
