@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         width: 400,
     },
     input: {
-        marginLeft: theme.spacing(1),
+        // marginLeft: theme.spacing(1),
         flex: 1,
     },
     iconButton: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     divider: {
         height: 28,
-        margin: 4,
+        // margin: 4,
     },
 }));
 

@@ -10,7 +10,7 @@ export default (
         <Switch>
             <Route exact path='/' component={ Main }/>
             <Route exact path='/genre' component={ Genre }/>
-            <Route path='/profile/id' component={ Profile }/>
+            <Route path='/profile/:id' component={ Profile }/>
         </Switch>
     </BrowserRouter>
 )
