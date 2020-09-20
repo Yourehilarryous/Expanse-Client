@@ -27,35 +27,33 @@ const Main = () => {
 
     const [input, setInput] = useState('');
 
+    let search = false
+
     // const handleSearch = (e) => {
     // }
     
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
 
-        setInput(e.target.value)
-        
 
-        console.log("Event:", e.target.value)
+        await setInput(e.target.value)
+        
+        console.log(search)
+        if(input){
+            search = true
+        } else {
+            search = false
+        }
+
+        console.log(search)
+        console.log("Event:", e.target)
         console.log(input)
         //Use the input toput to make the serach URL
         //COnfirm that the search returns data
         //Set data in this.state
         //Pass data down to the right components
     }
-    // const [animeList, setAnimeList] = useState();
 
-    // const fetchData = async () => {
-    //     await AnimeModel.show()
-    //         .then(data => {
-    //             setAnimeList(data)
-    //             console.log("Fetched Data:", data)
-    //         })
-    // }
-
-    // useEffect(() => {
-    //     fetchData()
-    // },[])
 
     return (
         <Grid container className={classes.container}>
@@ -67,10 +65,17 @@ const Main = () => {
                 />
             </Grid>
             <Grid item className={classes.cards} xs={12} sm={4}>
+            {search === true ?
                 <AnimeCard 
                     inputValue={input}
                     handleSubmit={onSubmit}
                 />
+                :
+                <AnimeCard 
+                    inputValue={input}
+                    handleSubmit={onSubmit}
+                />
+            }
             </Grid>
         </Grid>
         )
