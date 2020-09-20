@@ -26,11 +26,20 @@ const Main = () => {
     const classes = useStyles()
 
     const [input, setInput] = useState('');
+    
+    const [animeList, setAnimeList] = useState('');
 
     let search = false
 
     // const handleSearch = (e) => {
     // }
+    const fetchData = async () => {
+        await AnimeModel.show(inputValue)
+            .then(animeData => {
+                setAnimeList(animeData.data.results)
+                console.log(animeData.data.results)
+            })
+    }
     
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -44,7 +53,7 @@ const Main = () => {
         } else {
             search = false
         }
-
+        fetchData()
         console.log(search)
         console.log("Event:", e.target)
         console.log(input)
@@ -53,6 +62,10 @@ const Main = () => {
         //Set data in this.state
         //Pass data down to the right components
     }
+    
+    useEffect(() => {
+            fetchData()
+        },[])
 
 
     return (
@@ -68,12 +81,12 @@ const Main = () => {
             {search === true ?
                 <AnimeCard 
                     inputValue={input}
-                    handleSubmit={onSubmit}
+                    animeList={animeList}
                 />
                 :
                 <AnimeCard 
                     inputValue={input}
-                    handleSubmit={onSubmit}
+                    animeList={animeList}
                 />
             }
             </Grid>
