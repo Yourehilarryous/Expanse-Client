@@ -20,7 +20,6 @@ class AnimeCard extends Component {
     
 
     state = {
-        animeList: [],
         classes: makeStyles({
             root: {
                 maxWidth: 345,
@@ -29,18 +28,7 @@ class AnimeCard extends Component {
     }
     // const {input} = useState();
 
-    componentDidMount() {
-        this.fetchData()
-    }
-
-    fetchData = async () => {
-        await AnimeModel.show(this.props.inputValue)
-            .then(animeData => {
-                this.setState({ animeList: animeData.data.results })
-                console.log(animeData.data.results)
-            })
-    }
-
+    
 
     render() {
         const anime = this.state.animeList.map((a, i) => {
